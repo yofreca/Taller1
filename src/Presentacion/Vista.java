@@ -37,6 +37,10 @@ public class Vista extends javax.swing.JFrame {
     private void initComponents() {
 
         btnLeer = new javax.swing.JButton();
+        lblFecha = new javax.swing.JLabel();
+        lblAltitud = new javax.swing.JLabel();
+        lblLatitud = new javax.swing.JLabel();
+        lblLongitud = new javax.swing.JLabel();
         lblResultado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,22 +52,39 @@ public class Vista extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(196, Short.MAX_VALUE)
-                .addComponent(btnLeer)
-                .addGap(151, 151, 151))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnLeer)
+                        .addGap(44, 44, 44))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblLatitud)
+                            .addComponent(lblFecha)
+                            .addComponent(lblAltitud)
+                            .addComponent(lblLongitud))
+                        .addGap(17, 17, 17))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(162, 162, 162)
+                .addGap(176, 176, 176)
                 .addComponent(lblResultado)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 227, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(lblResultado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addComponent(lblFecha)
+                .addGap(9, 9, 9)
+                .addComponent(lblAltitud)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblLatitud)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblLongitud)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                 .addComponent(btnLeer)
-                .addGap(108, 108, 108))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblResultado)
+                .addGap(16, 16, 16))
         );
 
         pack();
@@ -84,14 +105,38 @@ public class Vista extends javax.swing.JFrame {
         return lblResultado;
     }
     
+    public JLabel getLblFecha() {
+        return lblFecha;
+    }
+
+    
+    public JLabel getLblAltitud() {
+        return lblAltitud;
+    }
+    
+    
+    public JLabel getLblLatitud() {
+        return lblLatitud;
+    }
+    
+    
+    public JLabel getLblLongitud() {
+        return lblLongitud;
+    }
+    
     
     private void capturarEventos() {
         btnLeer.addActionListener(getControl());
     }
     
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLeer;
+    private javax.swing.JLabel lblAltitud;
+    private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblLatitud;
+    private javax.swing.JLabel lblLongitud;
     private javax.swing.JLabel lblResultado;
     // End of variables declaration//GEN-END:variables
 }

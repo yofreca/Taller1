@@ -5,6 +5,8 @@
  */
 package Logica;
 import java.io.IOException;
+import java.util.Date;
+import static org.joda.time.format.ISODateTimeFormat.date;
 import ucar.ma2.Array;
 import ucar.ma2.DataType;
 import ucar.ma2.Index;
@@ -22,9 +24,10 @@ import ucar.nc2.dataset.NetcdfDataset;
  * @author John Castellanos
  */
 public class FileNetCDF {
-    private double esStartTime, radialTime;
+    private double esStartTime;
     private short elevationNumber;
-    private float elevationAngle, radialAzim, radialElev, siteLat, siteLon,siteAlt, firstGateRange, gateSize, nyquist, unambigRange, calibConst;
+    private float elevationAngle, siteLat, siteLon,siteAlt, firstGateRange, gateSize, nyquist, unambigRange, calibConst;
+    private float[] radialAzim, radialElev, radialTime;
     private float[][] Z,V,ZDR,KDP,PHIDP,RHOHV,HCLASS;   
     
     private Variable variable;
@@ -34,7 +37,7 @@ public class FileNetCDF {
         return esStartTime;
     }
 
-    public double getRadialTime() {
+    public float[] getRadialTime() {
         return radialTime;
     }
 
@@ -46,11 +49,11 @@ public class FileNetCDF {
         return elevationAngle;
     }
 
-    public float getRadialAzim() {
+    public float[] getRadialAzim() {
         return radialAzim;
     }
 
-    public float getRadialElev() {
+    public float[] getRadialElev() {
         return radialElev;
     }
 
@@ -113,13 +116,46 @@ public class FileNetCDF {
     public float[][] getHCLASS() {
         return HCLASS;
     }
+
+
+    public Date getFecha()
+    {
+        Date fecha; 
+        Long lnFecha;
+      
+        lnFecha = (long)esStartTime * 1000;
+        fecha = new Date(lnFecha);
+
+        return fecha;
+    }
+
     
     public void LeerArchivo() throws IOException
     {
-        NetcdfDataset netcdfRunFileDataset = new NetcdfDataset(NetcdfDataset.openFile("F:\\Java\\NEtCDF\\LeerNetCDF\\outN.1", null));
+        NetcdfDataset netcdfRunFileDataset = new NetcdfDataset(NetcdfDataset.openFile("E:\\Universidad\\Esp Ing Software\\Semestre 1\\Informatica I\\Taller 1\\Taller_1\\outN.1", null));
         
         esStartTime = getVariableEscalarDouble("esStartTime",netcdfRunFileDataset);
-        radialTime = getVariableEscalarDouble("radialTime",netcdfRunFileDataset);
+        radialTime = getVariable1DFloat("radialTime",netcdfRunFileDataset);
+        elevationNumber = getVariableEscalarShort("elevationNumber",netcdfRunFileDataset);
+        elevationAngle = getVariableEscalarFloat("elevationAngle",netcdfRunFileDataset);
+        siteLat =  getVariableEscalarFloat("siteLat",netcdfRunFileDataset);
+        siteLon = getVariableEscalarFloat("siteLon",netcdfRunFileDataset);
+        siteAlt = getVariableEscalarFloat("siteAlt",netcdfRunFileDataset);
+        firstGateRange = getVariableEscalarFloat("firstGateRange",netcdfRunFileDataset);
+        gateSize = getVariableEscalarFloat("gateSize",netcdfRunFileDataset);
+        nyquist = getVariableEscalarFloat("nyquist",netcdfRunFileDataset);
+        unambigRange = getVariableEscalarFloat("unambigRange",netcdfRunFileDataset);
+        calibConst = getVariableEscalarFloat("calibConst",netcdfRunFileDataset);
+        radialAzim = getVariable1DFloat("radialAzim",netcdfRunFileDataset);
+        radialElev = getVariable1DFloat("radialElev",netcdfRunFileDataset);
+        Z = getVariable2DFloat("Z",netcdfRunFileDataset);
+        V = getVariable2DFloat("V",netcdfRunFileDataset);
+        ZDR = getVariable2DFloat("ZDR",netcdfRunFileDataset);
+        KDP = getVariable2DFloat("KDP",netcdfRunFileDataset);
+        PHIDP = getVariable2DFloat("PHIDP",netcdfRunFileDataset);
+        RHOHV = getVariable2DFloat("RHOHV",netcdfRunFileDataset);
+        HCLASS = getVariable2DFloat("HCLASS",netcdfRunFileDataset);
+        
     }
     
     
@@ -154,5 +190,15 @@ public class FileNetCDF {
         float[][] float2D = (float[][]) ObjectVar;
         return float2D;
     }
+    
+    private float[] getVariable1DFloat(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
+    {
+        Variable variable = netcdfRunFileDataset.findVariable(sNameVariable);
+        Array ArrayVar  = variable.read();
+      
+         float[] float1D = (float[]) ArrayVar.get1DJavaArray(float.class); 
+         return float1D;
+    }
+    
     
 }
