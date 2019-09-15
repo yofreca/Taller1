@@ -5,8 +5,12 @@
  */
 package Presentacion;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -21,6 +25,8 @@ public class Vista extends javax.swing.JFrame {
         modelo = m;
         initComponents();
         capturarEventos();
+        
+        
     }
 
     public Modelo getModelo() {
@@ -42,32 +48,53 @@ public class Vista extends javax.swing.JFrame {
         lblLatitud = new javax.swing.JLabel();
         lblLongitud = new javax.swing.JLabel();
         lblResultado = new javax.swing.JLabel();
+        btnCrearGrafico = new javax.swing.JButton();
+        btnMostrarGrafica = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnLeer.setText("Leer");
+
+        btnCrearGrafico.setText("Crear Grafico");
+        btnCrearGrafico.setName("btnCreaGrafico"); // NOI18N
+        btnCrearGrafico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearGraficoActionPerformed(evt);
+            }
+        });
+
+        btnMostrarGrafica.setText("Mostrar Grafica");
+        btnMostrarGrafica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarGraficaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnLeer)
-                        .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblLatitud)
-                            .addComponent(lblFecha)
-                            .addComponent(lblAltitud)
-                            .addComponent(lblLongitud))
-                        .addGap(17, 17, 17))))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(176, 176, 176)
                 .addComponent(lblResultado)
-                .addGap(0, 227, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(btnLeer)
+                            .addGap(44, 44, 44))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblLatitud)
+                                .addComponent(lblFecha)
+                                .addComponent(lblAltitud)
+                                .addComponent(lblLongitud))
+                            .addGap(17, 17, 17)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCrearGrafico)
+                            .addComponent(btnMostrarGrafica))
+                        .addGap(24, 24, 24))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,17 +105,53 @@ public class Vista extends javax.swing.JFrame {
                 .addComponent(lblAltitud)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblLatitud)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(lblLongitud)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
-                .addComponent(btnLeer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(btnMostrarGrafica)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblResultado)
-                .addGap(16, 16, 16))
+                .addComponent(btnLeer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblResultado)
+                        .addGap(16, 16, 16))
+                    .addComponent(btnCrearGrafico, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCrearGraficoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearGraficoActionPerformed
+        // TODO add your handling code here:
+         
+       
+    }//GEN-LAST:event_btnCrearGraficoActionPerformed
+
+    public JButton getBtnCrearGrafico() {
+        return btnCrearGrafico;
+    }
+
+    public void setBtnCrearGrafico(JButton btnCrearGrafico) {
+        this.btnCrearGrafico = btnCrearGrafico;
+    }
+
+    public JButton getBtnMostrarGrafica() {
+        return btnMostrarGrafica;
+    }
+
+    public void setBtnMostrarGrafica(JButton btnMostrarGrafica) {
+        this.btnMostrarGrafica = btnMostrarGrafica;
+    }
+
+    private void btnMostrarGraficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarGraficaActionPerformed
+        // TODO add your handling code here:
+         ImageIcon icono = new javax.swing.ImageIcon(getClass().getResource("C:\\Users\\edwarc\\OneDrive - Bizagi\\UD_EIS\\SEM_I\\Informatica_1\\Taller1\\Graficas\\java-heat-chart.png"));
+        Image imagen = icono.getImage();
+        ImageIcon iconoEscalado = new ImageIcon (imagen.getScaledInstance(500,500,Image.SCALE_SMOOTH));
+        getLblResultado().setIcon(iconoEscalado);
+
+    }//GEN-LAST:event_btnMostrarGraficaActionPerformed
 
     public Controlador getControl() {
         if(control == null){
@@ -124,15 +187,42 @@ public class Vista extends javax.swing.JFrame {
         return lblLongitud;
     }
     
+    public JButton GetbtnCrearGrafico(){
+        return btnCrearGrafico;
+    }
+    
+    
+    
+    public JComboBox GetComboitem(){
+    
+        JComboBox combo1 = new JComboBox();
+    
+    combo1.addItem("Bashful");
+    combo1.addItem("Doc");
+    combo1.addItem("Dopey");
+    combo1.addItem("Grumpy");
+    combo1.addItem("Happy");
+    combo1.addItem("Sleepy");
+    combo1.addItem("Sneezy");
+        return null;
+    
+       
+    }
     
     private void capturarEventos() {
         btnLeer.addActionListener(getControl());
+        btnCrearGrafico.addActionListener(getControl());
+        btnMostrarGrafica.addActionListener(getControl());
     }
+    
+    
     
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCrearGrafico;
     private javax.swing.JButton btnLeer;
+    private javax.swing.JButton btnMostrarGrafica;
     private javax.swing.JLabel lblAltitud;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblLatitud;

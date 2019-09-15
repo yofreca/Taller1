@@ -24,27 +24,33 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnLeer" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblLatitud" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFecha" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAltitud" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblLongitud" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
               <Component id="lblResultado" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="227" max="32767" attributes="0"/>
+              <EmptySpace pref="96" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="btnLeer" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lblLatitud" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFecha" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblAltitud" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblLongitud" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnCrearGrafico" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnMostrarGrafica" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,13 +63,20 @@
               <Component id="lblAltitud" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="lblLatitud" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace pref="100" max="32767" attributes="0"/>
               <Component id="lblLongitud" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="192" max="32767" attributes="0"/>
-              <Component id="btnLeer" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="67" max="32767" attributes="0"/>
+              <Component id="btnMostrarGrafica" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="lblResultado" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <Component id="btnLeer" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="lblResultado" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="btnCrearGrafico" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,6 +96,23 @@
     <Component class="javax.swing.JLabel" name="lblLongitud">
     </Component>
     <Component class="javax.swing.JLabel" name="lblResultado">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCrearGrafico">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Crear Grafico"/>
+        <Property name="name" type="java.lang.String" value="btnCreaGrafico" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearGraficoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMostrarGrafica">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mostrar Grafica"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarGraficaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
