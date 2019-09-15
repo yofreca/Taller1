@@ -17,9 +17,9 @@ import org.tc33.jheatchart.HeatChart;
 import sun.misc.FloatingDecimal;
 import static sun.net.www.http.HttpClient.New;
 import Logica.FileNetCDF;
-import static javafx.scene.text.Font.font;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import static sun.net.www.http.HttpClient.New;
-import ucar.nc2.dataset.NetcdfDataset;
 import static visad.Display.Red;
 import visad.DisplayRealType;
 
@@ -32,8 +32,6 @@ public class Grafica {
     
     
     public float[][] dataset;
-     public FileNetCDF filenetcdf;
-    private NetcdfDataset netcdfRunFileDataset;
 
     public FileNetCDF getFilenetcdf() {
         return filenetcdf;
@@ -51,32 +49,14 @@ public class Grafica {
         this.filenetcdf = filenetcdf;
     }
     
-   
+    public FileNetCDF filenetcdf;
 
     public Grafica() throws IOException {
            
         float[][] dataset1 = filenetcdf.getZ();
         double[][] d=convertFloatsToDoubles(dataset1);
+    //    hacergrafica(d);
         
-        float[][] dataset2 = filenetcdf.getV();
-        double[][] e=convertFloatsToDoubles(dataset2);
-        
-        float[][] dataset3 = filenetcdf.getKDP();
-        double[][] f=convertFloatsToDoubles(dataset3);
-        
-         float[][] dataset4 = filenetcdf.getRHOHV();
-        double[][] g=convertFloatsToDoubles(dataset3);
-        
-        //hacergrafica(d,e,f,g);
-        
-}
-    
-public double graficarVariableFloatN(String variable) throws IOException{
-    
-    float[][] var1 = filenetcdf.getVariable2DFloat(variable, netcdfRunFileDataset);
-    double[][] d=convertFloatsToDoubles(var1);
-    //hacergrafica(d);
-        return 0;
 }
     
   
@@ -103,42 +83,52 @@ public double graficarVariableFloatN(String variable) throws IOException{
 
    
    
-    public static double[][] hacergrafica(double data[][], double[][] datax, double[][] datay, double[][] dataw, double[][] dataq, double[][] datap) throws IOException {
-  //      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static double[][] hacergrafica(double data[][], Color HighColor, Color LowColor, String fileName ) throws IOException {
+            //      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
-// Step 1: Create our heat map chart using our data.
+          // Step 1: Create our heat map chart using our data.
 
-HeatChart map = new HeatChart(data);
-// Step 2: Customise the chart.
-map.setTitle("This is my heat chart title");
-map.setXAxisLabel("X Axis");
-map.setYAxisLabel("Y Axis");
+          HeatChart map = new HeatChart(data);
+          // Step 2: Customise the chart.
+          map.setTitle("This is my heat chart title");
+          map.setXAxisLabel("X Axis");
+          map.setYAxisLabel("Y Axis");
 
-// Step 3: Output the chart to a file.
-map.setHighValueColour(Color.MAGENTA);
-map.setLowValueColour(Color.RED);
-map.setAxisColour(Color.RED);
-map.setShowXAxisValues(true);
-map.setShowYAxisValues(true);
-map.setBackgroundColour(Color.BLACK);
-map.setTitle("Prueba");
-map.setZValues(datax);
-map.setYValues(datay);
-map.setZValues(dataw);
-map.setXValues(datap);
-map.setYValues(dataq);
-map.setChartMargin(4);
-map.isShowXAxisValues();
-map.getZValues();
-map.setXValuesHorizontal(true);
-map.saveToFile(new File("graficas\\java-heat-chart.png"));
+          // Step 3: Output the chart to a file.
+          map.setHighValueColour(HighColor);
+          map.setLowValueColour(LowColor);
+          map.setAxisColour(Color.BLACK);
+          map.setBackgroundColour(Color.CYAN);
+          map.setTitle("Grafico");
+          map.saveToFile(new File("graficas/" + fileName + ".png"));
 
 
+          return data;
+   }
 
-return data;
+    public static ImageIcon scaleImage(ImageIcon icon, int w, int h)
+    {
+        
+        int nw = icon.getIconWidth();
+        int nh = icon.getIconHeight();
+
+        if(icon.getIconWidth() > w)
+        {
+          nw = w;
+          nh = (nw * icon.getIconHeight()) / icon.getIconWidth();
+        }
+
+        if(nh > h)
+        {
+          nh = h;
+          nw = (icon.getIconWidth() * nh) / icon.getIconHeight();
+        }
+
+        return new ImageIcon(icon.getImage().getScaledInstance(nw, nh, Image.SCALE_DEFAULT));
     }
 
-    }
+
+}
     
     
     

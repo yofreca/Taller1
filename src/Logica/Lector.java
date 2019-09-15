@@ -28,8 +28,4 @@ public class Lector {
         return netcdf;
     }
     
-    public Grafica grafica(){
-        return grafica();
-    }
-    
 }

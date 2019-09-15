@@ -25,34 +25,21 @@ public class Controlador implements ActionListener {
         modelo = ventana.getModelo();
     }
 
-  
-
-    
     @Override
     public void actionPerformed(ActionEvent e) {
-          Object btn = e.getSource();
-             if(btn.equals(ventana.GetbtnCrearGrafico())){
-              try {
-                  modelo.funcionalidadGraficar();
-              } catch (IOException ex) {
-                  Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-              }
+         try {
+             Object btn = e.getSource();
+             if(btn.equals(ventana.getBtnLeer())){
+                modelo.funcionalidadContar();
              }
-             else if (btn.equals(ventana.getBtnLeer())){
-                    try {
-                  modelo.funcionalidadContar();
-              } catch (IOException ex) {
-                  Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-              }
+             else if(btn.equals(ventana.getBtnGraficar()))
+             {
+                 modelo.funcionalidadGraficar();
              }
-             else{
-                // modelo.funcionalidadMostrarGrafica(); 
-                
-             }
+         } catch (IOException ex) {
+             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
     
     
-    
-    
-
+}

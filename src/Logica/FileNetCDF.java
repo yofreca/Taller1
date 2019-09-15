@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Logica;
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import static org.joda.time.format.ISODateTimeFormat.date;
@@ -89,7 +90,7 @@ public class FileNetCDF {
         return calibConst;
     }
 
-    public float    [][] getZ() {
+    public float[][] getZ() {
         return Z;
     }
 
@@ -132,7 +133,8 @@ public class FileNetCDF {
     
     public void LeerArchivo() throws IOException
     {
-        NetcdfDataset netcdfRunFileDataset = new NetcdfDataset(NetcdfDataset.openFile("C:\\Users\\edwarc\\OneDrive - Bizagi\\UD_EIS\\SEM_I\\Informatica_1\\LeerNetCDF\\outN.1", null));
+        String path = new File(".").getCanonicalPath();
+        NetcdfDataset netcdfRunFileDataset = new NetcdfDataset(NetcdfDataset.openFile(path + "\\outN.1", null));
         
         esStartTime = getVariableEscalarDouble("esStartTime",netcdfRunFileDataset);
         radialTime = getVariable1DFloat("radialTime",netcdfRunFileDataset);
@@ -159,7 +161,7 @@ public class FileNetCDF {
     }
     
     
-    public double getVariableEscalarDouble(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
+    private double getVariableEscalarDouble(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
     {
         Variable variable = netcdfRunFileDataset.findVariable(sNameVariable);
         double varDouble = variable.readScalarDouble();
@@ -174,14 +176,14 @@ public class FileNetCDF {
     }
     
     
-    public float getVariableEscalarFloat(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
+    private float getVariableEscalarFloat(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
     {
         Variable variable = netcdfRunFileDataset.findVariable(sNameVariable);
         float varFloat = variable.readScalarFloat();
         return varFloat;
     }
     
-    public float[][] getVariable2DFloat(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
+    private float[][] getVariable2DFloat(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
     {
         Variable variable = netcdfRunFileDataset.findVariable(sNameVariable);
         Array ArrayVar  = variable.read();
