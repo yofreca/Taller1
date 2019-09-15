@@ -89,7 +89,7 @@ public class FileNetCDF {
         return calibConst;
     }
 
-    public float[][] getZ() {
+    public float    [][] getZ() {
         return Z;
     }
 
@@ -132,7 +132,7 @@ public class FileNetCDF {
     
     public void LeerArchivo() throws IOException
     {
-        NetcdfDataset netcdfRunFileDataset = new NetcdfDataset(NetcdfDataset.openFile("E:\\Universidad\\Esp Ing Software\\Semestre 1\\Informatica I\\Taller 1\\Taller_1\\outN.1", null));
+        NetcdfDataset netcdfRunFileDataset = new NetcdfDataset(NetcdfDataset.openFile("C:\\Users\\edwarc\\OneDrive - Bizagi\\UD_EIS\\SEM_I\\Informatica_1\\LeerNetCDF\\outN.1", null));
         
         esStartTime = getVariableEscalarDouble("esStartTime",netcdfRunFileDataset);
         radialTime = getVariable1DFloat("radialTime",netcdfRunFileDataset);
@@ -159,7 +159,7 @@ public class FileNetCDF {
     }
     
     
-    private double getVariableEscalarDouble(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
+    public double getVariableEscalarDouble(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
     {
         Variable variable = netcdfRunFileDataset.findVariable(sNameVariable);
         double varDouble = variable.readScalarDouble();
@@ -174,14 +174,14 @@ public class FileNetCDF {
     }
     
     
-    private float getVariableEscalarFloat(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
+    public float getVariableEscalarFloat(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
     {
         Variable variable = netcdfRunFileDataset.findVariable(sNameVariable);
         float varFloat = variable.readScalarFloat();
         return varFloat;
     }
     
-    private float[][] getVariable2DFloat(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
+    public float[][] getVariable2DFloat(String sNameVariable, NetcdfDataset netcdfRunFileDataset) throws IOException
     {
         Variable variable = netcdfRunFileDataset.findVariable(sNameVariable);
         Array ArrayVar  = variable.read();
